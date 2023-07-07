@@ -3,7 +3,7 @@ import Sequencer from './components/sequencer';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Sequencer />
     </div>
   );
