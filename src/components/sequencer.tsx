@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ExampleComponent from './exampleComponent';
+import Mantra from './sequences/mantra/mantra';
 
 const Sequencer: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(-1);
@@ -12,7 +12,7 @@ const Sequencer: React.FC = () => {
     setCurrentStep(-1);
   };
 
-  const steps = [ExampleComponent];
+  const steps = [Mantra];
 
   const sequenceComponents = React.useMemo(
     () => steps.map((StepComponent) => (
