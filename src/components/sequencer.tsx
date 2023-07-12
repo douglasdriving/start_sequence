@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Mantra from './sequences/mantra/mantra';
+import ReflectionForm from './sequences/reflectionForm/reflectionForm';
 
 const Sequencer: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(-1);
@@ -12,7 +13,7 @@ const Sequencer: React.FC = () => {
     setCurrentStep(-1);
   };
 
-  const steps = [Mantra];
+  const steps = [Mantra, ReflectionForm];
 
   const sequenceComponents = React.useMemo(
     () => steps.map((StepComponent) => (
