@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Mantra from './sequences/mantra/mantra';
 import ReflectionForm from './sequences/reflectionForm/reflectionForm';
+import DayPlan from './sequences/dayplan/dayplan';
 
 const Sequencer: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(-1);
@@ -13,7 +14,7 @@ const Sequencer: React.FC = () => {
     setCurrentStep(-1);
   };
 
-  const steps = [Mantra, ReflectionForm];
+  const steps = [Mantra, ReflectionForm, DayPlan];
 
   const sequenceComponents = React.useMemo(
     () => steps.map((StepComponent) => (
@@ -33,7 +34,8 @@ const Sequencer: React.FC = () => {
   if (currentStep === -1) {
     content = (
       <>
-        <p>Sequencer</p>
+        <h1>Startup Sequence</h1>
+        <p>Welcome to a new day! Get yourself ready by running through the startup sequence</p>
         <button onClick={incrementStep}>Start</button>
       </>
     );
@@ -42,8 +44,8 @@ const Sequencer: React.FC = () => {
   } else {
     content = (
       <>
-        <p>Done!</p>
-        <button onClick={resetStep}>Restart</button>
+        <p>Startup sequence complete! Your day has been initiated</p>
+        <button onClick={resetStep}>Start a new sequence</button>
       </>
     );
   }

@@ -36,7 +36,7 @@ const Mantra = ({ handleClick }: IProps) => {
         <li>Ha en balanserad alkoholkonsumtion</li>
       </ul>
 
-      <button onClick={handleClick}>Jag har läst! Jag har förstått! Kör på</button>
+      <button onClick={handleClick}>Next</button>
     </div>
   );
 }
