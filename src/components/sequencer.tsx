@@ -16,7 +16,7 @@ const Sequencer: React.FC = () => {
     }
   };
 
-  const steps = [DayPlan, WelcomeMessage, Mantra, ReflectionForm, EndMessage];
+  const steps = [WelcomeMessage, Mantra, DayPlan, ReflectionForm, EndMessage];
 
   const sequenceComponents = React.useMemo(
     () => steps.map((StepComponent) => (
