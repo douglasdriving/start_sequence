@@ -1,17 +1,20 @@
 import { useState, useRef, useCallback } from 'react';
+import { useNavigate } from "react-router-dom";
 import TextArea from './textArea/textArea';
+import ReflectionI from '../../../interfaces/reflection';
 
 interface IProps {
-  handleClick: () => void;
+  nextPage: string;
 };
 
-const ReflectionForm = ({ handleClick }: IProps) => {
+const ReflectionForm = ({ nextPage }: IProps) => {
   const [gratitudeText, setGratitudeText] = useState<string>("");
   const [accomplishmentText, setAccomplishmentText] = useState<string>("");
   const [problemText, setProblemText] = useState<string>("");
   const downloadLink = useRef<HTMLAnchorElement | null>(null);
+  const navigate = useNavigate();
 
-  const handleDownload = useCallback(() => {
+  const saveReflection = useCallback(() => {
 
     if (!gratitudeText || !accomplishmentText || !problemText) {
       alert("Please fill in all fields before submitting.");
@@ -19,50 +22,72 @@ const ReflectionForm = ({ handleClick }: IProps) => {
     }
 
     const today: string = new Date().toLocaleDateString();
-    const file = new Blob(
-      [
-        `Daily Reflection
-${today}
 
-Gratitude:
-${gratitudeText}
+    const textToSave: string = (`Daily Reflection
+    ${today}
+    
+    Gratitude:
+    ${gratitudeText}
+    
+    Accomplishments:
+    ${accomplishmentText}
+    
+    Problems:
+    ${problemText}
+            `);
 
-Accomplishments:
-${accomplishmentText}
+    //download it
+    // const file = new Blob(
+    //   [textToSave]
+    //   ,
+    //   { type: 'text/plain' }
+    // );
 
-Problems:
-${problemText}
-        `
-      ]
-      ,
-      { type: 'text/plain' }
-    );
+    // if (downloadLink.current === null) {
+    //   alert("Something went wrong while preparing your download.");
+    //   return;
+    // }
 
-    if (downloadLink.current === null) {
-      alert("Something went wrong while preparing your download.");
-      return;
-    }
+    // downloadLink.current.href = URL.createObjectURL(file);
+    // downloadLink.current.download = 'reflection' + today + ".txt";
 
-    downloadLink.current.href = URL.createObjectURL(file);
-    downloadLink.current.download = 'reflection' + today + ".txt";
-    handleClick();
+    const reflections: ReflectionI[] = JSON.parse(localStorage.getItem('reflections') || '[]');
+    reflections.push({ date: today, text: textToSave });
+    localStorage.setItem('reflections', JSON.stringify(reflections));
 
-  }, [gratitudeText, accomplishmentText, problemText, handleClick]);
+    navigate(nextPage);
+
+  }, [gratitudeText, accomplishmentText, problemText, navigate, nextPage]);
 
   return (
     <form className="reflectionForm">
 
       <h1>Daily Reflection</h1>
 
-      <TextArea label="Gratitude" hint="What are you grateful for today?" value={gratitudeText} setValue={setGratitudeText} />
-      <TextArea label="Accomplishments" hint="What have you accomplished recently?" value={accomplishmentText} setValue={setAccomplishmentText} />
-      <TextArea label="Problems" hint="What problems have you encountered recently?" value={problemText} setValue={setProblemText} />
+      <TextArea
+        label="Gratitude"
+        hint="What are you grateful for today?"
+        value={gratitudeText}
+        setValue={setGratitudeText}
+      />
+      <TextArea
+        label="Accomplishments"
+        hint="What have you accomplished recently?"
+        value={accomplishmentText}
+        setValue={setAccomplishmentText}
+      />
+      <TextArea
+        label="Problems"
+        hint="What problems have you encountered recently?"
+        value={problemText}
+        setValue={setProblemText}
+      />
 
       <hr />
 
       <a
         href="#"
-        onClick={handleDownload}
+        onClick={saveReflection}
         ref={downloadLink}
         role='button'
         type='submit'

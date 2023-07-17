@@ -1,10 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-interface IProps {
-  handleClick: () => void;
-}
-
-const EndMessage = ({ handleClick }: IProps) => {
+const EndMessage = () => {
   const [message, setMessage] = useState<string>(localStorage.getItem('endMessage') || "Startup sequence completed!");
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLParagraphElement>) => {
@@ -12,10 +9,12 @@ const EndMessage = ({ handleClick }: IProps) => {
     localStorage.setItem('endMessage', e.target.innerText);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div>
       <p contentEditable onBlur={handleMessageChange}>{message}</p>
-      <button onClick={handleClick}>Restart Sequence</button>
+      <button onClick={() => navigate('/')}>Restart Sequence</button>
       <p style={{ position: 'fixed', bottom: '0', left: '50%', transform: 'translateX(-50%)' }}>
         <i>Tip: Press the message to edit your final message</i>
       </p>

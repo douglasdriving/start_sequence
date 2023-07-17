@@ -9,7 +9,6 @@ const Sequencer: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
 
   const incrementStep = () => {
-    console.log('incrementing step');
     setCurrentStep(currentStep + 1);
     if (currentStep >= steps.length - 1) {
       setCurrentStep(0);
@@ -18,15 +17,17 @@ const Sequencer: React.FC = () => {
 
   const steps = [WelcomeMessage, Mantra, ReflectionForm, DayPlan, EndMessage];
 
-  const sequenceComponents = React.useMemo(
-    () => steps.map((StepComponent) => (
-      <StepComponent handleClick={incrementStep} />
-    )),
-    [incrementStep]
-  );
+  // const sequenceComponents = React.useMemo(
+  //   () => steps.map((StepComponent) => (
+  //     <StepComponent handleClick={incrementStep} />
+  //   )),
+  //   [steps, incrementStep]
+  // );
 
   return (
-    <div>{sequenceComponents[currentStep]}</div>
+    <>
+      {/* <div>{sequenceComponents[currentStep]}</div> */}
+    </>
   );
 };
 

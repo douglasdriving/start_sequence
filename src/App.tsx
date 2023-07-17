@@ -1,10 +1,11 @@
 import './App.css';
 import Sequencer from './components/sequencer';
+import Root from './components/root';
 
 function App() {
   return (
     <div className='App'>
-      <Sequencer />
+      <Root />
     </div>
   );
 }

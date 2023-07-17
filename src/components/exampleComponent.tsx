@@ -2,7 +2,7 @@ interface IProps {
   handleClick: () => void;
 }
 
-const WelcomeMessage = ({ handleClick }: IProps) => {
+const ExampleComponent = ({ handleClick }: IProps) => {
   return (
     <div>
       <h1>Sequence X</h1>
@@ -10,4 +10,4 @@ const WelcomeMessage = ({ handleClick }: IProps) => {
   );
 }
 
-export default WelcomeMessage;
+export default ExampleComponent;

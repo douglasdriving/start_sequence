@@ -1,12 +1,16 @@
 import CheckBox from "./checkBox/checkBox";
 import { useState } from "react";
 import EditableList from "./editableList/editableList";
+import { useNavigate } from "react-router-dom";
+
 
 interface IProps {
-  handleClick: () => void;
+  nextPage: string;
 };
 
-const DayPlan = ({ handleClick }: IProps) => {
+const DayPlan = ({ nextPage }: IProps) => {
+
+  const Navigate = useNavigate();
 
   const [editMode, setEditMode] = useState<boolean>(false);
 
@@ -44,7 +48,7 @@ const DayPlan = ({ handleClick }: IProps) => {
               key={index}
               label={step}
             />))}
-          <button onClick={handleClick} >Next</button>
+          <button onClick={() => Navigate(nextPage)} >Next</button>
           <button onClick={() => setEditMode(true)}>Edit Steps</button>
         </>
 

@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 interface IProps {
-  handleClick: () => void;
+  nextPage: string;
 }
 
-const Mantra = ({ handleClick }: IProps) => {
+const Mantra = ({ nextPage }: IProps) => {
   const [mantra, setMantra] = useState<string>(localStorage.getItem('mantra') || "Your Mantra");
 
   const convertNewlinesToBreaks = (text: string) => {
@@ -16,11 +17,13 @@ const Mantra = ({ handleClick }: IProps) => {
     localStorage.setItem('mantra', e.target.innerText);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="mantra">
       <h1>Mantra</h1>
       <p contentEditable onBlur={handleMantraChange} dangerouslySetInnerHTML={convertNewlinesToBreaks(mantra)}></p>
-      <button onClick={handleClick}>Next</button>
+      <button onClick={() => navigate(nextPage)}>Next</button>
       <p style={{ position: 'fixed', bottom: '0', left: '50%', transform: 'translateX(-50%)' }}>
         <i>Tip: Press the mantra to edit it!</i>
       </p>
