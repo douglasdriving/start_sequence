@@ -1,3 +1,5 @@
+import TextareaAutosize from "react-textarea-autosize";
+
 interface ITextareaProps {
   label: string,
   hint: string,
@@ -6,11 +8,17 @@ interface ITextareaProps {
 };
 
 const TextArea = ({ label, hint, value, setValue }: ITextareaProps) => {
+
   return (
     <>
       <h2>{label}</h2>
       <p>{hint}</p>
-      <textarea onChange={e => setValue(e.target.value)} value={value} />
+      <TextareaAutosize
+        onChange={e => setValue(e.target.value)}
+        value={value}
+        minRows={3}
+        style={{ width: "100%", resize: "none" }}
+      />
     </>
   );
 };
