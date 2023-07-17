@@ -9,13 +9,14 @@ const Sequencer: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
 
   const incrementStep = () => {
+    console.log('incrementing step');
     setCurrentStep(currentStep + 1);
     if (currentStep >= steps.length - 1) {
       setCurrentStep(0);
     }
   };
 
-  const steps = [WelcomeMessage, Mantra, ReflectionForm, DayPlan, EndMessage];
+  const steps = [DayPlan, WelcomeMessage, Mantra, ReflectionForm, EndMessage];
 
   const sequenceComponents = React.useMemo(
     () => steps.map((StepComponent) => (
