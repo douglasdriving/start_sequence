@@ -22,7 +22,7 @@ const Root: React.FC = () => {
         <Route path="/end" element={<EndMessage />} />
 
         {/* Other */}
-        <Route path="reflectionHistory" element={<ReflectionHistory />} />
+        <Route path="reflection-history" element={<ReflectionHistory />} />
 
       </Routes>
     </Router>

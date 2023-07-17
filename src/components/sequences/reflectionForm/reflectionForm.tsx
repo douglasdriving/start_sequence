@@ -23,10 +23,8 @@ const ReflectionForm = ({ nextPage }: IProps) => {
 
     const today: string = new Date().toLocaleDateString();
 
-    const textToSave: string = (`Daily Reflection
-    ${today}
-    
-    Gratitude:
+    const textToSave: string = (
+      `Gratitude:
     ${gratitudeText}
     
     Accomplishments:
@@ -35,21 +33,6 @@ const ReflectionForm = ({ nextPage }: IProps) => {
     Problems:
     ${problemText}
             `);
-
-    //download it
-    // const file = new Blob(
-    //   [textToSave]
-    //   ,
-    //   { type: 'text/plain' }
-    // );
-
-    // if (downloadLink.current === null) {
-    //   alert("Something went wrong while preparing your download.");
-    //   return;
-    // }
-
-    // downloadLink.current.href = URL.createObjectURL(file);
-    // downloadLink.current.download = 'reflection' + today + ".txt";
 
     const reflections: ReflectionI[] = JSON.parse(localStorage.getItem('reflections') || '[]');
     reflections.push({ date: today, text: textToSave });

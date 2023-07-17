@@ -30,6 +30,7 @@ const WelcomeMessage = ({ nextPage }: IProps) => {
       <h1 contentEditable onBlur={handleHeaderChange}>{header}</h1>
       <p contentEditable onBlur={handleMessageChange}>{message}</p>
       <button onClick={goToNextPage}>Start</button>
+      <button onClick={() => navigate('/reflection-history')}>Reflection History</button>
       <p style={{ position: 'fixed', bottom: '0', left: '50%', transform: 'translateX(-50%)' }}>
         <i>Tip: Press the message or header to edit your welcome message</i>
       </p>
