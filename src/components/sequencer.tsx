@@ -2,19 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Mantra from './sequences/mantra/mantra';
 import ReflectionForm from './sequences/reflectionForm/reflectionForm';
 import DayPlan from './sequences/dayplan/dayplan';
+import WelcomeMessage from './sequences/welcomeMessage/welcomeMessage';
 
 const Sequencer: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState<number>(-1);
+  const [currentStep, setCurrentStep] = useState<number>(0);
 
   const incrementStep = () => {
     setCurrentStep(currentStep + 1);
   };
 
   const resetStep = () => {
-    setCurrentStep(-1);
+    setCurrentStep(0);
   };
 
-  const steps = [Mantra, ReflectionForm, DayPlan];
+  const steps = [WelcomeMessage, Mantra, ReflectionForm, DayPlan];
 
   const sequenceComponents = React.useMemo(
     () => steps.map((StepComponent) => (
@@ -31,15 +32,7 @@ const Sequencer: React.FC = () => {
 
   let content;
 
-  if (currentStep === -1) {
-    content = (
-      <>
-        <h1>Startup Sequence</h1>
-        <p>Welcome to a new day! Get yourself ready by running through the startup sequence</p>
-        <button onClick={incrementStep}>Start</button>
-      </>
-    );
-  } else if (currentStep < sequenceComponents.length) {
+  if (currentStep < sequenceComponents.length) {
     content = sequenceComponents[currentStep];
   } else {
     content = (

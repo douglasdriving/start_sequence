@@ -2,13 +2,12 @@ interface IProps {
   handleClick: () => void;
 }
 
-const ExampleComponent: React.FC<IProps> = ({ handleClick }) => {
+const WelcomeMessage = ({ handleClick }: IProps) => {
   return (
-    <div style={{ border: '2px solid red', width: 200, height: 200 }}>
-      <p>This is an example component</p>
-      <button onClick={handleClick}>Click me!</button>
+    <div>
+      <h1>Sequence X</h1>
     </div>
   );
 }
 
-export default ExampleComponent;
+export default WelcomeMessage;
