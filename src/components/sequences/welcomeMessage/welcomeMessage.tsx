@@ -45,8 +45,8 @@ const WelcomeMessage = ({ nextPage }: IProps) => {
         </button>
       </div>
 
-      <p className="fixed bottom-0 left-1/2 -translate-x-1/2 mb-5">
-        <i>Tip: Press the message or header to edit your welcome message</i>
+      <p className="fixed bottom-0 left-1/2 -translate-x-1/2 mb-5 font-serif text-gray-500">
+        Tip: Press the message or header to edit your welcome message
       </p>
     </div>
   );

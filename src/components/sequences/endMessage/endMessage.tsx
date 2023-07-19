@@ -14,7 +14,7 @@ const EndMessage = () => {
   return (
     <div>
       <p contentEditable onBlur={handleMessageChange}>{message}</p>
-      <button onClick={() => navigate('/')}>Restart Sequence</button>
+      <button onClick={() => navigate('/start_sequence')}>Restart Sequence</button>
       <p style={{ position: 'fixed', bottom: '0', left: '50%', transform: 'translateX(-50%)' }}>
         <i>Tip: Press the message to edit your final message</i>
       </p>

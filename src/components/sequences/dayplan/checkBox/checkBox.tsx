@@ -5,9 +5,9 @@ interface IProps {
 const CheckBox = ({ label }: IProps) => {
 
   return (
-    <div className="inputWithLabel">
-      <input type='checkbox' />
-      <p>{label}</p>
+    <div className="flex row mb-2">
+      <input type='checkbox' className="mr-2"/>
+      <p className="text-xl">{label}</p>
     </div>
   );
 

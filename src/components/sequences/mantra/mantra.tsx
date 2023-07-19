@@ -20,12 +20,16 @@ const Mantra = ({ nextPage }: IProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="mantra">
-      <h1>Mantra</h1>
-      <p contentEditable onBlur={handleMantraChange} dangerouslySetInnerHTML={convertNewlinesToBreaks(mantra)}></p>
-      <button onClick={() => navigate(nextPage)}>Next</button>
-      <p style={{ position: 'fixed', bottom: '0', left: '50%', transform: 'translateX(-50%)' }}>
-        <i>Tip: Press the mantra to edit it!</i>
+    <div className="flex flex-col justify-center min-h-screen px-64">
+      <h1 className="text-3xl font-bold text-gray-800 mb-5 text-left">Mantra</h1>
+      <p className="text-gray-700 mb-5" contentEditable onBlur={handleMantraChange} dangerouslySetInnerHTML={convertNewlinesToBreaks(mantra)}></p>
+      <button
+        className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded"
+        onClick={() => navigate(nextPage)}>
+        Next
+      </button>
+      <p className="fixed bottom-0 left-1/2 -translate-x-1/2 mb-5 font-serif text-gray-500">
+        Tip: Press the mantra to edit it!
       </p>
     </div>
   );

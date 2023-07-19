@@ -43,9 +43,9 @@ const ReflectionForm = ({ nextPage }: IProps) => {
   }, [gratitudeText, accomplishmentText, problemText, navigate, nextPage]);
 
   return (
-    <form className="reflectionForm">
+    <form className="flex flex-col justify-center min-h-screen px-80">
 
-      <h1>Daily Reflection</h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-5 text-left">Daily Reflection</h1>
 
       <TextArea
         label="Gratitude"
@@ -66,14 +66,13 @@ const ReflectionForm = ({ nextPage }: IProps) => {
         setValue={setProblemText}
       />
 
-      <hr />
-
       <a
         href="#"
         onClick={saveReflection}
         ref={downloadLink}
         role='button'
         type='submit'
+        className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded text-center mt-5"
       >
         Submit
       </a>

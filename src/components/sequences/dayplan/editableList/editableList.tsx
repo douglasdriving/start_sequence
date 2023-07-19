@@ -19,16 +19,21 @@ const EditableList = ({ initialList, saveList }: IProps) => {
 
   return (
     <>
-      {items.map((item, index) => (
-        <div style={{ display: 'flex', flexDirection: 'row' }} key={index}>
-          <input
-            value={item}
-            onChange={(event) => handleInputChange(index, event.target.value)}
-            style={{ width: '100%' }}
-          />
-          <button onClick={() => removeItem(index)}>🗑️</button>
-        </div>
-      ))}
+      <div className="bg-gray-300 p-4 rounded">
+
+        {items.map((item, index) => (
+          <div style={{ display: 'flex', flexDirection: 'row' }} key={index}>
+            <input
+              value={item}
+              onChange={(event) => handleInputChange(index, event.target.value)}
+              style={{ width: '100%' }}
+            />
+            <button onClick={() => removeItem(index)}>🗑️</button>
+          </div>
+        ))}
+
+      </div>
+
       <div>
         <button onClick={() => setItems([...items, ''])}>➕</button>
       </div>
