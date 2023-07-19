@@ -47,7 +47,7 @@ const ReflectionHistory = () => {
 
       </div>
 
-      <button onClick={() => navigate('/')}>Home</button>
+      <button onClick={() => navigate('/start_sequence')}>Home</button>
 
     </div>
   );

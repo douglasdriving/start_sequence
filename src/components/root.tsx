@@ -14,15 +14,15 @@ const Root: React.FC = () => {
     <Router>
       <Routes>
 
-        {/* Part of the sequence */}
-        <Route path="/" element={<WelcomeMessage nextPage={('/mantra')} />} />
-        <Route path="/mantra" element={<Mantra nextPage={'/reflect'} />} />
-        <Route path="/reflect" element={<ReflectionForm nextPage={'/dayplan'} />} />
-        <Route path="/dayplan" element={<DayPlan nextPage={'/end'} />} />
-        <Route path="/end" element={<EndMessage />} />
+          {/* Part of the sequence */}
+          <Route path="/start_sequence" element={<WelcomeMessage nextPage={('/mantra')} />} />
+          <Route path="/mantra" element={<Mantra nextPage={'/reflect'} />} />
+          <Route path="/reflect" element={<ReflectionForm nextPage={'/dayplan'} />} />
+          <Route path="/dayplan" element={<DayPlan nextPage={'/end'} />} />
+          <Route path="/end" element={<EndMessage />} />
 
-        {/* Other */}
-        <Route path="reflection-history" element={<ReflectionHistory />} />
+          {/* Other */}
+          <Route path="/reflection-history" element={<ReflectionHistory />} />
 
       </Routes>
     </Router>
