@@ -22,22 +22,39 @@ const EditableList = ({ initialList, saveList }: IProps) => {
       <div className="bg-gray-300 p-4 rounded">
 
         {items.map((item, index) => (
-          <div style={{ display: 'flex', flexDirection: 'row' }} key={index}>
+          <div className="flex flex-row justify-between mb-2 bg-white p-2 rounded" key={index}>
             <input
+              className="w-auto text-xl"
+              size={item.length > 0 ? item.length : 1}
               value={item}
               onChange={(event) => handleInputChange(index, event.target.value)}
-              style={{ width: '100%' }}
             />
-            <button onClick={() => removeItem(index)}>🗑️</button>
+            <button
+              onClick={() => removeItem(index)}
+              className="text-xl rounded hover:bg-red-300"
+            >
+              🗑️
+            </button>
           </div>
         ))}
 
       </div>
 
-      <div>
-        <button onClick={() => setItems([...items, ''])}>➕</button>
+      <div className="flex flex-row justify-center space-x-4 mt-4">
+        <button
+          onClick={() => setItems([...items, ''])}
+          className="text-xl bg-gray-300 p-4 rounded hover:bg-gray-400 flex-1 font-bold"
+        >
+          ➕ Add Task
+        </button>
+        <button
+          onClick={() => { saveList(items) }}
+          className="text-xl bg-gray-300 p-4 rounded hover:bg-gray-400 flex-1 font-bold"
+        >
+          💾 Save
+        </button>
       </div>
-      <button onClick={() => { saveList(items) }}>Save</button>
+
     </>
   );
 };
