@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef  } from "react";
 
 interface IProps {
   initialList: string[];
@@ -9,6 +9,12 @@ const EditableList = ({ initialList, saveList }: IProps) => {
 
   const [items, setItems] = useState<string[]>(initialList);
   const [inputWidth, setInputWidth] = useState<number>(10);
+  const inputRefs = useRef<HTMLInputElement[]>([]);
+
+  const setInputRef = (element: HTMLInputElement | null, index: number) => {
+    if (!element) return;
+    inputRefs.current[index] = element;
+  };  
 
   const removeItem = (indexToRemove: number) => {
     const newItemList = items.filter((_, index) => index !== indexToRemove);
@@ -35,26 +41,30 @@ const EditableList = ({ initialList, saveList }: IProps) => {
     );
     setInputWidth(newInputWidth);
 
-    //focus on last input
-    if (items.length > initialList.length) {
-      const lastItemIndex = items.length - 1;
-      const lastItemInput = document.getElementById(`item-${lastItemIndex}`);
-      lastItemInput?.focus();
+  }, [items]);
+
+  useEffect(() => {
+
+    // Focus on the last input field if items length changes
+    const lastInputRef = inputRefs.current[items.length - 1];
+    if (lastInputRef) {
+      lastInputRef.focus();
     }
-  }, [items, initialList.length]);
+
+  }, [items.length]);
 
   return (
     <>
       <div className="bg-gray-300 rounded p-4">
 
         {items.map((item, index) => (
-          <div className="flex flex-row justify-between mb-2 bg-white p-2 rounded " key={index}>
+          <div className="flex flex-row justify-between mb-2 bg-white p-2 rounded " key={'input' + index}>
             <input
-              className="text-xl max-w-sm flex-1"
-              size={inputWidth + 2}
+              className="text-xl flex-grow mr-2"
+              // size={inputWidth + 2}
               value={item}
               onChange={(event) => handleInputChange(index, event.target.value)}
-              id={`item-${index}`}
+              ref={(el) => setInputRef(el, index)}
             />
             <button
               onClick={() => removeItem(index)}
