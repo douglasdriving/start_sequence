@@ -58,13 +58,13 @@ const DayPlan = ({ nextPage }: IProps) => {
               <button onClick={() => Navigate(nextPage)}
                 className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded text-center mt-5"
               >
-                Next
+                ✅ Next
               </button>
               <button
                 onClick={() => setEditMode(true)}
                 className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded text-center mt-5"
               >
-                Edit Steps
+                🖊️ Edit Steps
               </button>
             </div>
           </>
