@@ -37,7 +37,7 @@ const DayPlan = ({ nextPage }: IProps) => {
 
   return (
     <div className="flex justify-center">
-      <div className="flex flex-col justify-center min-h-screen max-w-lg">
+      <div className="flex flex-col justify-center min-h-screen w-lg">
 
         <h1 className="text-3xl font-bold text-gray-800 mb-4 text-left">Plan Your Day</h1>
 
