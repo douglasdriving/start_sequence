@@ -35,13 +35,13 @@ const WelcomeMessage = ({ nextPage }: IProps) => {
           className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded"
           onClick={goToNextPage}
         >
-          Start
+          🔥 Start
         </button>
         <button
           className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded"
           onClick={() => navigate('/reflection-history')}
         >
-          Reflection History
+          💭 Reflection History
         </button>
       </div>
 
