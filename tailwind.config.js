@@ -8,6 +8,18 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.direction-rtl': {
+          direction: 'rtl',
+        },
+        '.direction-ltr': {
+          direction: 'ltr',
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    },
+  ],
 }
 
