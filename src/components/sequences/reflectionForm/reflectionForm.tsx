@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
 import TextArea from './textArea/textArea';
 import ReflectionI from '../../../interfaces/reflection';
@@ -11,7 +11,6 @@ const ReflectionForm = ({ nextPage }: IProps) => {
   const [gratitudeText, setGratitudeText] = useState<string>("");
   const [accomplishmentText, setAccomplishmentText] = useState<string>("");
   const [problemText, setProblemText] = useState<string>("");
-  const downloadLink = useRef<HTMLAnchorElement | null>(null);
   const navigate = useNavigate();
 
   const saveReflection = useCallback(() => {
@@ -66,16 +65,14 @@ const ReflectionForm = ({ nextPage }: IProps) => {
         setValue={setProblemText}
       />
 
-      <a
-        href="#"
+      <button
         onClick={saveReflection}
-        ref={downloadLink}
-        role='button'
         type='submit'
         className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded text-center mt-5"
       >
         Submit
-      </a>
+      </button>
+
     </form>
   );
 }

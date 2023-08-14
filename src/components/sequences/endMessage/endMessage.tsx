@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import TextareaAutosize from "react-textarea-autosize";
 
 const EndMessage = () => {
   const [message, setMessage] = useState<string>(localStorage.getItem('endMessage') || "Startup sequence completed!");
 
-  const handleMessageChange = (e: React.ChangeEvent<HTMLParagraphElement>) => {
-    setMessage(e.target.innerText);
-    localStorage.setItem('endMessage', e.target.innerText);
+  const handleMessageChange = (newMessage: string) => {
+    setMessage(newMessage);
+    localStorage.setItem('endMessage', newMessage);
   };
 
   const navigate = useNavigate();
@@ -14,13 +15,13 @@ const EndMessage = () => {
   return (
     <div className="flex justify-center">
       <div className="flex flex-col justify-center min-h-screen items-center">
-        <p
-          contentEditable
-          onBlur={handleMessageChange}
-          className="text-2xl font-bold"
-        >
-          {message}
-        </p>
+
+        <TextareaAutosize
+          onChange={e => handleMessageChange(e.target.value)}
+          value={message}
+          minRows={1}
+          className="w-full text-2xl font-bold text-center resize-none"
+        />
 
         <button
           className="w-max bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-3 rounded text-center mt-8"
