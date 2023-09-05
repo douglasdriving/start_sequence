@@ -7,6 +7,7 @@ import ReflectionForm from './sequences/reflectionForm/reflectionForm';
 import DayPlan from './sequences/dayplan/dayplan';
 import EndMessage from './sequences/endMessage/endMessage';
 import ReflectionHistory from './reflectionHistory/reflectionHistory';
+import StartFinished from './sequences/startFinished/startFinished';
 
 const Root: React.FC = () => {
 
@@ -14,11 +15,14 @@ const Root: React.FC = () => {
     <Router>
       <Routes>
 
-          {/* Part of the sequence */}
+          {/* Start */}
           <Route path="/start_sequence" element={<WelcomeMessage nextPage={('/mantra')} />} />
-          <Route path="/mantra" element={<Mantra nextPage={'/reflect'} />} />
-          <Route path="/reflect" element={<ReflectionForm nextPage={'/dayplan'} />} />
-          <Route path="/dayplan" element={<DayPlan nextPage={'/end'} />} />
+          <Route path="/mantra" element={<Mantra nextPage={'/dayplan'} />} />
+          <Route path="/dayplan" element={<DayPlan nextPage={'/start-finished'} />} />
+          <Route path="/start-finished" element={<StartFinished nextPage={'/reflect'}/>} />
+
+          {/* End */}
+          <Route path="/reflect" element={<ReflectionForm nextPage={'/end'} />} />
           <Route path="/end" element={<EndMessage />} />
 
           {/* Other */}
