@@ -65,13 +65,25 @@ const ReflectionForm = ({ nextPage }: IProps) => {
         setValue={setProblemText}
       />
 
-      <button
-        onClick={saveReflection}
-        type='submit'
-        className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded text-center mt-5"
-      >
-        Submit
-      </button>
+      <div className="space-x-4">
+
+        <button
+          onClick={saveReflection}
+          type='submit'
+          className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded text-center mt-5"
+        >
+          ✅ Submit
+        </button>
+
+        <button
+          onClick={() => navigate(nextPage)}
+          type='submit'
+          className="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-2 rounded text-center mt-5"
+        >
+          ❌ Skip
+        </button>
+
+      </div>
 
     </form>
   );
